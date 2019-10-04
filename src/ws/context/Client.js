@@ -15,6 +15,7 @@ class Client{
     onMessage = (data) => {
         this.Room.emit("message",data);
     };
+
     disconnect = () => {
         this.Room.leaveClient(this);
     };

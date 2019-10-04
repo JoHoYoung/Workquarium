@@ -12,9 +12,7 @@ function genRoom(){
     }
 }
 function AllocateRoom(socket) {
-    console.log("NEW CLI");
     let cnt = 0;
-    console.log(config);
     let find = false;
     while (cnt !== config.ROOM.USER_PER_ROOM) {
         if (Rooms[Room.idx].running || Rooms[Room.idx].nums > config.ROOM.USER_PER_ROOM) {
@@ -31,7 +29,7 @@ function AllocateRoom(socket) {
         let id = uid("10");
         let name = "";
         let c = new Client({socket,id,name,Room:Rooms[Room.idx]});
-        console.log(`ENTER at ${Room.idx}`)
+        console.log(`ENTER at ${Room.idx}`);
         Rooms[Room.idx].enterClient(c);
     }
 }
