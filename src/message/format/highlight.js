@@ -6,4 +6,4 @@ const HIGHLIGHT = () => {
   };
 };
 
-module.exports.default = HIGHLIGHT;
+module.exports = HIGHLIGHT;

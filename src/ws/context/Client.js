@@ -14,6 +14,7 @@ class Client {
     this.socket.on('message', this.onMessage);
   }
 
+  // when client send message to server.
     onMessage = (data) => {
       handlerFactory(data.type)(data, this);
     };

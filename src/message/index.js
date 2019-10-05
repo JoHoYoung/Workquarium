@@ -1,11 +1,11 @@
-import { CHAT } from './format/chat';
-import { DRAW } from './format/draw';
-import { END } from './format/end';
-import { ENTER } from './format/enter';
-import { HIGHLIGHT } from './format/highlight';
-import { LEAVE } from './format/leave';
-import { RENAME } from './format/rename';
-import { START } from './format/start';
+import CHAT from './format/chat';
+import DRAW from './format/draw';
+import END from './format/end';
+import ENTER from './format/enter';
+import HIGHLIGHT from './format/highlight';
+import LEAVE from './format/leave';
+import RENAME from './format/rename';
+import START from './format/start';
 
 import { chatHandler } from './handler/chat';
 import { drawHandler } from './handler/draw';

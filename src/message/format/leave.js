@@ -8,4 +8,4 @@ const LEAVE = (opt) => {
   };
 };
 
-module.exports.default = LEAVE;
+module.exports = LEAVE;

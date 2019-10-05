@@ -1,9 +1,9 @@
+const uid = require('uid');
+
 const EventEmitter = require('events');
 const Message = require('../../message');
 
 const Rooms = {};
-
-const uid = require('uid');
 
 class Room extends EventEmitter {
     static idx = 0;
@@ -39,14 +39,13 @@ class Room extends EventEmitter {
     };
 
     init = () => {
+
       this.clients = {};
       this.nums = 0;
 
       delete Rooms[this.name];
-
       this.name = uid('10');
       Rooms[this.name] = this;
-
       this.running = false;
     };
 

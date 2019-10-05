@@ -1,8 +1,8 @@
-import { StartHttp } from "./http";
-import { StartWs } from "./ws";
+import { StartHttp } from './http';
+import { StartWs } from './ws';
 
 
 module.exports = {
-    StartWs,
-    StartHttp
+  StartWs,
+  StartHttp,
 };

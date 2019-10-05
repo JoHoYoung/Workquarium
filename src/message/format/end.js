@@ -6,4 +6,4 @@ const END = (opt) => {
   };
 };
 
-module.exports.default = END;
+module.exports = END;

@@ -9,7 +9,6 @@ const uid = require('uid');
 const genRoom = () => {
   for (let i = 0; i < config.ROOM.NUM; i += 1) {
     const id = uid('10');
-    console.log(id);
     Rooms[id] = new Room({ id: i, name: id });
   }
 };
@@ -20,7 +19,6 @@ const AllocateRoom = (socket) => {
       const id = uid('10');
       const name = '';
       const c = new Client({ socket, id, name, Room: Rooms[Room.idx] });
-      console.log(`ENTER at ${Rooms[key].name}`);
       Rooms[key].enterClient(c);
       break;
     }
@@ -48,18 +46,18 @@ const EnterRoom = (name, socket) => {
 };
 
 const StartWs = () => {
+
   genRoom();
+
   for (const key in Rooms) {
     if (Rooms.hasOwnProperty(key)) {
-      console.log('SET ', key);
       io.of(`/${key}`).on('connection', (socket) => {
-        console.log(`enter ${key}`);
         EnterRoom(key, socket);
       });
     }
   }
+
   io.of('/create').on('connection', (socket) => {
-    console.log('CREATE');
     AllocateRoom(socket);
   });
 };

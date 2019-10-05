@@ -9,4 +9,4 @@ const RENAME = (opt) => {
   };
 };
 
-module.exports.default = RENAME;
+module.exports = RENAME;

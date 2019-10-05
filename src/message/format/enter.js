@@ -8,4 +8,4 @@ const ENTER = (opt) => {
   };
 };
 
-module.exports.default = ENTER;
+module.exports = ENTER;

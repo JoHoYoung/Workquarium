@@ -10,4 +10,4 @@ const DRAW = (opt) => {
   };
 };
 
-module.exports.default = DRAW;
+module.exports = DRAW;

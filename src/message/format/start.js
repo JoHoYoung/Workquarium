@@ -3,8 +3,8 @@ import config from '../../config';
 const START = (opt) => {
   return {
     type: config.TYPE.START,
-    room_id: opt.room_id,
+    roomId: opt.roomId,
   };
 };
 
-module.exports.default = START;
+module.exports = START;
