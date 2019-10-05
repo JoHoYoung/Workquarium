@@ -1,5 +1,13 @@
-FROM node
+FROM node:10
 
-RUN curl hhtrpS
-COPY . /
-RUN node app.js
+WORKDIR /app
+
+COPY package.json /app/
+COPY package-lock.json /app/
+
+RUN npm install
+
+COPY . /app
+
+
+ENTRYPOINT ["npm","run","local"]

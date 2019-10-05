@@ -60,69 +60,13 @@ class Redis{
                 resolve(temp);
             })
         })
+    };
+
+    del = async (key) => {
+        return new Promise((resolve,reject) => {
+            this.conn.del(key,function (err, temp) {
+                resolve(temp);
+            })
+        })
     }
-}
-
-async function asyncdel(key)
-{
-    return new Promise((resolve,reject) => {
-        redisClient.del(key,function (err, temp) {
-            resolve(temp);
-        })
-    })
-}
-
-
-async function getCommentNum() {
-    return new Promise(async (resolve, reject) => {
-        let count = 0;
-
-        redisClient.keys('comment*', function (err, keys) {
-            keys.forEach(function (key, pos) {
-                count++
-            });
-            resolve(count)
-        })
-    })
-}
-
-async function getLikeNum() {
-    return new Promise(async (resolve, reject) => {
-        let count = 0;
-
-        redisClient.keys('like*', function (err, keys) {
-            keys.forEach(function (key, pos) {
-                count++
-            });
-            resolve(count)
-        })
-    })
-}
-
-async function getCommentLikeNum()
-{
-    return new Promise(async (resolve, reject) => {
-        let count = 0;
-
-        redisClient.keys('commentlike*', function (err, keys) {
-            keys.forEach(function (key, pos) {
-                count++
-            });
-            resolve(count)
-        })
-    })
-}
-
-async function getFollowNum()
-{
-    return new Promise(async (resolve, reject) => {
-        let count = 0;
-
-        redisClient.keys('follow*', function (err, keys) {
-            keys.forEach(function (key, pos) {
-                count++
-            });
-            resolve(count)
-        })
-    })
 }

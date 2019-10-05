@@ -17,7 +17,9 @@ class Client{
     };
 
     disconnect = () => {
-        this.Room.leaveClient(this);
+        if(this.Room){
+            this.Room.leaveClient(this);
+        }
     };
 
 }

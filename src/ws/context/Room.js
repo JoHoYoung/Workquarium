@@ -1,5 +1,7 @@
 const EventEmitter = require('events');
+const Rooms = {};
 
+const uid = require("uid");
 class Room extends EventEmitter {
     static idx = 0;
 
@@ -9,7 +11,7 @@ class Room extends EventEmitter {
         this.nums = 0;
         this.running = false;
         this.id = opt.id;
-        this.name = "";
+        this.name = opt.name;
 
         this.broadcast = this.broadcast.bind(this);
         this.init = this.init.bind(this);
@@ -30,12 +32,17 @@ class Room extends EventEmitter {
             console.log("SOCKET", data);
             this.clients[key].socket.emit(action, data);
         }
-
     };
 
     init = () => {
         this.clients = {};
         this.nums = 0;
+
+        delete Rooms[this.name];
+
+        this.name = uid("10");
+        Rooms[this.name] = this;
+
         this.running = false;
     };
 
@@ -43,7 +50,6 @@ class Room extends EventEmitter {
         this.clients[c.id] = c;
         this.nums++;
         if (this.nums > 1) {
-            console.log("SEND");
             this.running = true;
             this.broadcast("message", "START");
         }
@@ -59,5 +65,5 @@ class Room extends EventEmitter {
 
 module.exports = {
     Room,
-    Rooms: [],
+    Rooms,
 };

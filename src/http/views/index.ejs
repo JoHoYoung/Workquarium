@@ -18,7 +18,7 @@
                 if (ws) {
                     return false;
                 }
-                ws = io.connect("http://localhost:3000");
+                ws = io("http://localhost:3000/create");
                 console.log("CONNECT");
                 ws.on("message",(data) => {
                     console.log("GET MEESAGE",data)
