@@ -5,7 +5,7 @@ const RENAME = (opt) => {
     type: config.TYPE.RENAME,
     roomId: opt.roomId,
     userId: opt.userId,
-    name: opt.name,
+    userName: opt.userName,
   };
 };
 

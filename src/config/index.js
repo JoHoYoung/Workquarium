@@ -6,6 +6,7 @@ const root = path.join(__dirname, '../../');
 const defaultConfig = {
   root,
 };
+
 module.exports = {
   local: Object.assign(defaultConfig, local),
   prod: Object.assign(defaultConfig, prod),

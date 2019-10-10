@@ -3,12 +3,13 @@ module.exports = {
     NUM: 10,
     USER_PER_ROOM: 10,
     DISCONNECT_TIME: 1000,
+    MAX_SHARE: 3,
   },
   PORT: 3000,
   REDIS: {
-    HOST: 1,
-    PORT: 1,
-    PASSWORD: 1,
+    HOST: "54.180.145.195",
+    PORT: 6379,
+    PASSWORD: "",
   },
   TYPE: {
     CHAT: 700,
@@ -19,5 +20,10 @@ module.exports = {
     LEAVE: 705,
     RENAME: 706,
     START: 707,
+    IMAGE: 708,
+    HTML: 709,
+    DELETE_SHARE: 710,
+    REJECT: 711,
+    CREATE:712,
   },
 };

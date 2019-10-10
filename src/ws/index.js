@@ -1,7 +1,9 @@
-import { server } from '../http';
 import config from '../config';
+
+import { server } from '../v1';
 import { Room, Rooms } from './context/Room';
 import { Client } from './context/Client';
+import { CREATE, REJECT } from '../message'
 
 const io = require('socket.io')(server);
 const uid = require('uid');
@@ -19,7 +21,9 @@ const AllocateRoom = (socket) => {
       const id = uid('10');
       const name = '';
       const c = new Client({ socket, id, name, Room: Rooms[Room.idx] });
+
       Rooms[key].enterClient(c);
+      socket.send(CREATE({id:key}));
       break;
     }
   }
@@ -40,9 +44,10 @@ const EnterRoom = (name, socket) => {
   }
 
   if (!find) {
-    socket.emit('message', JSON.stringify({ msg: `Invalid Room ${name}` }));
+    socket.emit('message', JSON.stringify(REJECT({msg:"Invalid Room Id"})));
     socket.disconnect();
   }
+
 };
 
 const StartWs = () => {

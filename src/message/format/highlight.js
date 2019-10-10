@@ -1,8 +1,9 @@
 import config from '../../config';
 
-const HIGHLIGHT = () => {
+const HIGHLIGHT = (opt) => {
   return {
     type: config.TYPE.HIGHLIGHT,
+    htmlId: opt.htmlId,
   };
 };
 

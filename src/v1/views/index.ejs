@@ -24,6 +24,13 @@
                     console.log("GET MEESAGE",data)
                     print(data.toString())
                 })
+
+              ws.on("image", (data) => {
+                var d = document.createElement("img");
+                d.setAttribute("src", `data:image/jpeg;base64, ${data.src}`);
+                output.appendChild(d)
+                console.log(data);
+              })
                 return false;
             };
 

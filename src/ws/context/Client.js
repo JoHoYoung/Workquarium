@@ -1,4 +1,4 @@
-import { handlerFactory } from '../../message';
+import {handlerFactory} from '../../message';
 
 class Client {
   constructor(opt) {
@@ -9,21 +9,26 @@ class Client {
 
     this.disconnect = this.disconnect.bind(this);
     this.onMessage = this.onMessage.bind(this);
+    this.send = this.send.bind(this);
 
     this.socket.on('disconnect', this.disconnect);
     this.socket.on('message', this.onMessage);
   }
 
-  // when client send message to server.
-    onMessage = (data) => {
-      handlerFactory(data.type)(data, this);
-    };
+  send = (data) => {
+    this.socket.emit('message',data.toString());
+  };
 
-    disconnect = () => {
-      if (this.Room) {
-        this.Room.leaveClient(this);
-      }
-    };
+  // when client send message to server.
+  onMessage = (data) => {
+    handlerFactory(data.type)(data, this);
+  };
+
+  disconnect = () => {
+    if (this.Room) {
+      this.Room.leaveClient(this);
+    }
+  };
 }
 
 module.exports = {

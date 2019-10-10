@@ -1,4 +1,4 @@
-import CHAT from './format/chat';
+import { CHAT } from './format/chat';
 import DRAW from './format/draw';
 import END from './format/end';
 import ENTER from './format/enter';
@@ -6,6 +6,8 @@ import HIGHLIGHT from './format/highlight';
 import LEAVE from './format/leave';
 import RENAME from './format/rename';
 import START from './format/start';
+import CREATE from './format/create';
+import REJECT from './format/reject';
 
 import { chatHandler } from './handler/chat';
 import { drawHandler } from './handler/draw';
@@ -15,7 +17,11 @@ import { highlightHandler } from './handler/highlight';
 import { leaveHandler } from './handler/leave';
 import { renameHandler } from './handler/rename';
 import { startHandler } from './handler/start';
+import { imageHandler } from './handler/image';
 import config from '../config';
+
+// ACTIONS : CHAT, DRAW, END, ENTER, HIGHLIGHT, LEAVE, RENAME, START
+// in Actions, SHARE : html, image
 
 const handlerFactory = (type) => {
   switch (type) {
@@ -35,6 +41,8 @@ const handlerFactory = (type) => {
       return renameHandler;
     case config.TYPE.START:
       return startHandler;
+    case  config.TYPE.IMAGE:
+      return imageHandler;
     default:
   }
 };
@@ -49,4 +57,6 @@ module.exports = {
   LEAVE,
   START,
   RENAME,
+  CREATE,
+  REJECT,
 };
