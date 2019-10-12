@@ -9,14 +9,12 @@ const router = express.Router();
 
 /* GET users listing. */
 router.post('/get', async (req, res) => {
-
   const roomId = req.body.roomId;
-  let logs = await redis.lrange(`${roomId}_LOG`);
+  let logs = await redis.lrange(`${roomId}_log`);
 
   if(logs.length > 0){
-
     let output = "";
-    logs = logs.map((el) => JSON.parse(el)).filter((data) => data.type = config.TYPE.CHAT);
+    logs = logs.map((el) => JSON.parse(el)).filter((data) => data.type === config.TYPE.CHAT);
     for(let i=0;i<logs.length;i++){
       let json = JSON.parse(logs[i]);
       output += `${json.userName}|${json.msg}|${json.createdAt}\n`

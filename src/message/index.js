@@ -18,6 +18,8 @@ import { leaveHandler } from './handler/leave';
 import { renameHandler } from './handler/rename';
 import { startHandler } from './handler/start';
 import { imageHandler } from './handler/image';
+import { deleteHandler } from './handler/delete';
+
 import config from '../config';
 
 // ACTIONS : CHAT, DRAW, END, ENTER, HIGHLIGHT, LEAVE, RENAME, START
@@ -47,7 +49,20 @@ const handlerFactory = (type) => {
   }
 };
 
+const unitHandlerFactory = (type) => {
+  switch (type) {
+    case config.TYPE.DRAW:
+      return drawHandler;
+    case config.TYPE.HIGHLIGHT:
+      return highlightHandler;
+    case config.TYPE.DELETE:
+      return deleteHandler;
+    default:
+  }
+};
+
 module.exports = {
+  unitHandlerFactory,
   handlerFactory,
   CHAT,
   DRAW,

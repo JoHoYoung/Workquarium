@@ -1,12 +1,10 @@
-import { handlerFactory } from '../../message';
-
-class Client {
+// import redis from '../../lib/redis';
+import { unitHandlerFactory }from '../../message'
+class Unit {
   constructor(opt) {
     this.socket = opt.socket;
-    this.id = opt.id;
-    this.name = opt.name;
+    this.clientId = opt.clientId;
     this.Room = opt.Room;
-    this.type = opt.type;
 
     this.disconnect = this.disconnect.bind(this);
     this.onMessage = this.onMessage.bind(this);
@@ -15,24 +13,22 @@ class Client {
     this.socket.on('disconnect', this.disconnect);
     this.socket.on('message', this.onMessage);
   }
-
   send = (data) => {
     this.socket.emit('message',JSON.stringify(data));
   };
-
   // when client send message to server.
   onMessage = (data) => {
     data = JSON.parse(data);
-    handlerFactory(data.type)(data, this);
+    unitHandlerFactory(data.type)(data,this);
   };
 
   disconnect = () => {
     if (this.Room) {
-      this.Room.leaveClient(this.id);
+      this.Room.leaveUnit(this.clientId);
     }
   };
 }
 
 module.exports = {
-  Client,
+  Unit
 };

@@ -16,12 +16,19 @@
             };
             document.getElementById("open").onclick = function(evt) {
                 if (ws) {
+
                     return false;
                 }
-                ws = io("http://localhost:3000/create");
+                ws = io("http://localhost:3000/create",{transports:['websocket'],query:{test:"HOYOUNG?"}});
                 console.log("CONNECT");
                 ws.on("message",(data) => {
-                    console.log("GET MEESAGE",data)
+
+                  if(data.type == IMAGE || HTML){
+                    data.src =   {
+
+                    }
+                  }
+                                      console.log("GET MEESAGE",data)
                     print(data.toString())
                 })
 

@@ -22,7 +22,7 @@ module.exports = {
     START: 707,
     IMAGE: 708,
     HTML: 709,
-    DELETE_SHARE: 710,
+    DELETE: 710,
     REJECT: 711,
     CREATE:712,
   },

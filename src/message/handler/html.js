@@ -1,6 +1,5 @@
-import redis from "../../lib/redis";
-const uid = require('uid');
 import config from '../../config';
+import redis from '../../lib/redis';
 
 const imageHandler = (data, client) => {
   // Set images id when user 1st share image.
