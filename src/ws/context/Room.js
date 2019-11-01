@@ -126,7 +126,7 @@ class Room extends EventEmitter {
       this.cronFire = setTimeout(() => {
         redis.del(`${this.id}_log`);
         this.init();
-      },5분);
+      });
     }
   }
 }
