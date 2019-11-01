@@ -37,9 +37,9 @@
 * 모든 메세지에는 타입이 있으며 각 메세지의 타입별로 행동을 정의하고, 타입을 팩토리로 넘겨 처리한다.
 ```
 class Client {
-.
-.
-.
+  .
+  .
+  .
   onMessage = (data) => {
     data = JSON.parse(data);
     handlerFactory(data.type)(data, this);
